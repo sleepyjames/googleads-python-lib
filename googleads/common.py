@@ -34,6 +34,17 @@ _PYTHON_VERSION = 'Python/%d.%d' % (sys.version_info[0], sys.version_info[1])
 # credentials.
 _OAUTH_2_AUTH_KEYS = ('client_id', 'client_secret', 'refresh_token')
 
+_ADWORDS_YAML_CONFIG_FILENAME = "googleads.yaml"
+
+# The call to `expanduser` will raise an ImportError on Google App Angine. 
+# So we catch this and default to the current project root instead.
+try:
+    _BASEDIR = os.path.expanduser('~')
+except ImportError:
+    _BASEDIR = os.path.realpath('.')
+
+ADWORDS_CONFIG_PATH = os.path.join(_BASEDIR, _ADWORDS_YAML_CONFIG_FILENAME)
+
 
 def GenerateLibSig(short_name):
   """Generates a library signature suitable for a user agent field.
