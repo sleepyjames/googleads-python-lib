@@ -87,7 +87,7 @@ class DfpClient(object):
 
   @classmethod
   def LoadFromStorage(
-      cls, path=os.path.join(os.path.expanduser('~'), 'googleads.yaml')):
+    cls, path=googleads.common.ADWORDS_CONFIG_PATH):
     """Creates a DfpClient with information stored in a yaml file.
 
     Args:
